@@ -5,8 +5,8 @@ import { UserContext } from '../../contexts/UserContext';
 import userKit from '../../data/userKit';
 import { StyledLoginBox, StyledPrimaryButton } from '../../theme/StyledComponents'
 
-export default function MainLogin(props) {
-  const [emailInput, setEmailInput] = useState('jonas2@jonas.com');
+export default function MainLogin() {
+  const [emailInput, setEmailInput] = useState('Jonas6@hotmail.com');
 	const [passwordInput, setPasswordInput] = useState('Pelle123');
 	const [loginStatus, setLoginStatus] = useState('')
 
@@ -16,18 +16,15 @@ export default function MainLogin(props) {
 
 	const handleOnClick = () => {
     handleLogin(emailInput, passwordInput);
-    console.log('logging in with ' + emailInput, passwordInput);
 	};
 
 	function handleLogin (email, password) {
 		UserKit.login(email, password)
 			.then(res => res.json())
 			.then(data => {
-        console.log(data);
 				if(!data.token) {
 					setLoginStatus('Invalid login info')
 				} else {
-          setLoginStatus('HALFWAY THERE')
 					UserKit.setToken(data.token);
 					UserKit.fetchMe()
 					.then(res => res.json())
@@ -45,7 +42,6 @@ export default function MainLogin(props) {
       {UserKit.checkToken() && (
         <p>Loggeed in already</p>
       )}
-
       {!UserKit.checkToken() && (
         <>
       <StyledLoginBox>
@@ -56,7 +52,7 @@ export default function MainLogin(props) {
           setPasswordInput={setPasswordInput}
         ></LoginInput>
         <StyledPrimaryButton onClick={handleOnClick}> Login </StyledPrimaryButton>
-      </StyledLoginBox>
+        </StyledLoginBox>
           <p>{loginStatus}</p>
       </>
       )}

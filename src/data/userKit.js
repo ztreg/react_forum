@@ -20,7 +20,6 @@ export default class {
       password: signupPayload.password,
       country: signupPayload.country
     }
-    // payload.country = Number(payload.country)
     console.log(payload);
     return fetch(SIGNUPURL, {
       method: 'POST',

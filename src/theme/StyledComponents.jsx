@@ -10,66 +10,14 @@ export const StyledNavBar = styled.div`
   padding: 30px;
   display: grid;
   border-radius: 15px;
-  grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
-  background-color:${({theme}) => theme.colors.MainDarkColor};
-  
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  background-color:${({theme}) => theme.colors.SecondaryDarkColor};
   font-size: 1.3em;
   
   .userBox {
     display: flex;
     justify-content: flex-end;
   }
-`
-
-export const StyledForm = styled.div`
-.createCustomerForm {
-  box-shadow: 5px 5px 15px 5px #000000;
-  width: 50%;
-  min-width: 380px;
-  background: black;
-  padding: 20px;
-  font-size: 1.1em;
-  border-radius: 5px;
-  background: ${({theme})=>theme.colors.SecondaryDarkColor};
-}
-.flexOuter li {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  margin-bottom: 5px;
-}
-
-.flexOuter label {
-  color: white;
-}
-
-.flexOuter input {
-  border-radius: 5px;
-  border: 2px solid ${({theme})=>theme.colors.MainDarkColor};
-  color: white;
-  background: ${({theme})=>theme.colors.SecondaryDarkColor};
-  ::placeholder {
-      opacity: 0.6;
-      color: white;
-    /* font-size: em; */
-  }
-  :last-child {
-    margin-bottom: 20px;
-  }
-  :focus {
-    outline: none;
-  }
-}
-
-.flexOuter > li > label {
-  flex: 1 0 120px;
-  max-width: 220px;
-}
-
-.flexOuter > li > label + * {
-  flex: 1 0 180px;
-  padding: 5px;
-}
 `
 
 export const StyledInputLogin = styled.div`
@@ -90,21 +38,21 @@ export const StyledInputLogin = styled.div`
 
 export const StyledPrimaryButton = styled.button`
   padding: 10px;
-  background-color: ${({theme})=>theme.colors.thirdDarkColor};
+  background-color: ${({theme})=>theme.colors.ThirdDarkColor};
   color: white;
   outline: none;
-  font-size: 1rem;
+  font-size: 1.2rem;
   border: none;
-  border-radius: 5px;
+  border-radius: 15px;
   display: inline-block;
   &:hover{
     cursor: pointer;
-    background-color: ${({theme})=>theme.colors.mainDarkColor};
+    background-color: ${({theme})=>theme.colors.MainDarkColor};
   }
   :focus {
     outline: none;
   }
-  height: 50%;
+  
   
 `
 

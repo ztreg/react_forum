@@ -13,7 +13,8 @@ body {
 }
 
 a {
-  color: white;
+  color: red;
+  text-decoration: none;
 }
 
 h1 {

@@ -11,7 +11,6 @@ export default function UserInfo() {
       setUserData(test)
     }
   }
-  console.log(userData);
   useEffect(() => {
     checkUserInfo()
   }, [])
