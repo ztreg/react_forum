@@ -20,6 +20,7 @@ export default function LoginInput(props) {
 				onChange={e => props.setPasswordInput(e.target.value)}
 				placeholder='Password'
 			/>
+			{props.loginStatus}
     </StyledInputLogin>
   )
 }

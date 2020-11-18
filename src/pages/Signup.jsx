@@ -1,11 +1,11 @@
 import React, { useState } from 'react'
 import { useHistory } from 'react-router-dom'
-import SignupForm from '../components/Forms/SignupForm'
+import GeneralisedForm from '../components/Forms/GeneralisedForm'
 import userKit from '../data/userKit'
+import formDataKit from '../data/formDataKit'
 
 export default function Signup() {
   const UserKit = new userKit()
-
   const [signupFormData, setSignupFormData] = useState({
     firstName: '',
     lastName: '',
@@ -13,21 +13,22 @@ export default function Signup() {
     password: '',
     country: '',
   })
+  const formArray = formDataKit.createSignupFormData(signupFormData)
 
-  const [signupProgress, setSignupProgress] = useState('')
+  const [signupProgress, setSignupProgress] = useState(null)
   const history = useHistory()
 
   function handlOnClickSignup () {
     UserKit.signup(signupFormData)
     .then(res => res.json())
     .then(data => {
-      console.log(data)
       if(data.hasOwnProperty('firstName')){
         alert("You are now signed up")
         history.push('/login')
       } else {
-        console.log('failed');
-        setSignupProgress('Signup failed')
+        for (const [key, value] of Object.entries(data)) {
+          setSignupProgress(`${value}`)
+        }
       }
     })
   }
@@ -36,20 +37,16 @@ export default function Signup() {
     setSignupFormData({...signupFormData, [e.target.name]: e.target.value})
   }
 
-
   return (
     <div>
       <h4>Signup page</h4>
-      <SignupForm
-        onChange={handleInputOnChange}
-        setFirstName={signupFormData["firstName"]}
-        setLastName={signupFormData["lastName"]}
-        setEmail={signupFormData["email"]}
-        setCounty={signupFormData["country"]}
-        setPassword={signupFormData["password"]}
-        handlOnClickSignup={handlOnClickSignup}
-        progress={signupProgress}
-      />
+        <GeneralisedForm 
+          formArray={formArray}
+          buttonText='Create Account'
+          onChange={handleInputOnChange}
+          handleOnClick={handlOnClickSignup}
+          createStatus={signupProgress}
+        />
     </div>
   )
 }

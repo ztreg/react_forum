@@ -14,10 +14,6 @@ export const StyledNavBar = styled.div`
   background-color:${({theme}) => theme.colors.SecondaryDarkColor};
   font-size: 1.3em;
   
-  .userBox {
-    display: flex;
-    justify-content: flex-end;
-  }
 `
 
 export const StyledInputLogin = styled.div`
@@ -52,17 +48,36 @@ export const StyledPrimaryButton = styled.button`
   :focus {
     outline: none;
   }
-  
-  
 `
 
 export const StyledLoginBox = styled.div`
-  
   border-radius: 5px;
   width: 400px;
   padding: 10px;
   box-shadow: 5px 5px 15px 5px #000000;
   text-align: center;
   margin: 0 auto;
-  
+`
+
+export const StyledAlertBox = styled.div`
+  padding: 20px;
+  background-color: #f44336;
+  color: white;
+  margin-bottom: 15px;
+  display: none;
+
+  input[type=button] {
+    margin-left: 15px;
+    color: white;
+    font-weight: bold;
+    float: right;
+    font-size: 22px;
+    line-height: 20px;
+    cursor: pointer;
+    transition: 0.3s; 
+    :hover {
+      color: black;
+    }
+  }
+
 `

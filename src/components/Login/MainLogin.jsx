@@ -23,16 +23,19 @@ export default function MainLogin() {
 			.then(res => res.json())
 			.then(data => {
 				if(!data.token) {
-					setLoginStatus('Invalid login info')
+          for (const [key, value] of Object.entries(data)) {
+            setLoginStatus(`${value}`)
+          }
 				} else {
+          setLoginStatus('ALL GOOD')
 					UserKit.setToken(data.token);
 					UserKit.fetchMe()
 					.then(res => res.json())
 					.then(data =>  {
-            setLoginStatus('ALL GOOD')
+            console.log(data);
             setUserData(data)
 						UserKit.setUserInfo(data)
-						history.push('/')
+            history.push('/')
 					})
 				}
 			})
@@ -50,10 +53,11 @@ export default function MainLogin() {
           passwordInput={passwordInput}
           setEmailInput={setEmailInput}
           setPasswordInput={setPasswordInput}
+          loginStatus={loginStatus}
         ></LoginInput>
         <StyledPrimaryButton onClick={handleOnClick}> Login </StyledPrimaryButton>
         </StyledLoginBox>
-          <p>{loginStatus}</p>
+         
       </>
       )}
 

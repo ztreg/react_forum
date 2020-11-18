@@ -10,8 +10,7 @@ export default function SignupForm(props) {
   return (
     <StyledForm>
       {countries && (
-      <div className="createCustomerForm">
-        <ul className="flexOuter">
+        <ul>
           <li>
             <label htmlFor="firstName">Firstname</label>
             <input
@@ -72,7 +71,7 @@ export default function SignupForm(props) {
           </li>
           {props.progress}
         </ul>
-      </div>
+     
       )}
       {!countries && (
         'Loading...'

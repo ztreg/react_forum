@@ -3,6 +3,7 @@ const COUNTRIES_URL = `${ROOT_URL}/api/v1/countries/`
 // const TEST_URL = `${ROOT_URL}/api/v1/`
 const POSTS_URL = `${ROOT_URL}/api/v1/forum/posts/`
 const CATEGORIES_URL = `${ROOT_URL}api/v1/forum/categories`
+
 // eslint-disable-next-line import/no-anonymous-default-export
 export default class {
 
@@ -24,10 +25,23 @@ export default class {
 
   publishPost(payload){
     return fetch(POSTS_URL, {
-      methood: "POST",
+      method: "POST",
       body: JSON.stringify(payload),
       headers: this.getPrivateHeaders()
     })
+  }
+  // 
+  replyToPost(payload) {
+    return fetch(POSTS_URL, {
+      method: "POST",
+      body: JSON.stringify(payload),
+      headers: this.getPrivateHeaders()
+    })
+  }
+
+  fetchReplyList(id){
+    const REPLIES_URL = `${ROOT_URL}/api/v1/forum/posts/${id}/replies`;
+    return fetch(REPLIES_URL, {headers: this.getPrivateHeaders()})
   }
 
   getToken() {
@@ -42,9 +56,8 @@ export default class {
 
   getPrivateHeaders () {
     return  {
-        "Content-Type": "application/json",
-        "Authorization": `Bearer ${this.getToken()}`
-      
+      "Content-Type": "application/json",
+      "Authorization": `Bearer ${this.getToken()}`
     }
   }
 }
