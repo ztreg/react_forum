@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useHistory } from 'react-router-dom'
 import GeneralisedForm from '../components/Forms/GeneralisedForm'
 import userKit from '../data/userKit'
@@ -6,6 +6,7 @@ import formDataKit from '../data/formDataKit'
 
 export default function Signup() {
   const UserKit = new userKit()
+  const [signupProgress, setSignupProgress] = useState(null)
   const [signupFormData, setSignupFormData] = useState({
     firstName: '',
     lastName: '',
@@ -13,9 +14,8 @@ export default function Signup() {
     password: '',
     country: '',
   })
-  const formArray = formDataKit.createSignupFormData(signupFormData)
 
-  const [signupProgress, setSignupProgress] = useState(null)
+  const formArray = formDataKit.createSignupFormData(signupFormData)
   const history = useHistory()
 
   function handlOnClickSignup () {
@@ -40,13 +40,17 @@ export default function Signup() {
   return (
     <div>
       <h4>Signup page</h4>
+      {formArray && (
         <GeneralisedForm 
           formArray={formArray}
           buttonText='Create Account'
           onChange={handleInputOnChange}
           handleOnClick={handlOnClickSignup}
           createStatus={signupProgress}
-        />
+          selectedProps='countries'
+      />
+      )}
+
     </div>
   )
 }

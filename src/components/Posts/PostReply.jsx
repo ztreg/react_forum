@@ -16,6 +16,7 @@ export default function PostReply(props) {
   function handleOnInputReply(e) {
     setReplyFormData({...replyFormData, [e.target.name]: e.target.value})
   }
+
   function handleOnClickCreateReply() {
     const payload = {
       ...replyFormData,
@@ -25,10 +26,11 @@ export default function PostReply(props) {
     .then(res => res.json())
     .then(data => {
       if(data.hasOwnProperty('author')) {
+        console.log(data.author);
+        setReplyStatus('Reply sent')
         let copy =  [...postReplies]
         copy.push(data)
         setPostReplies(copy);
-        setReplyStatus('Reply sent')
       } else {
         for (const [key, value] of Object.entries(data)) {
           setReplyStatus(`${key} : ${value}`)
@@ -36,7 +38,9 @@ export default function PostReply(props) {
       }
     })
   }
+
   return (
+    formArray && (
       <GeneralisedForm 
         formArray={formArray}
         onChange={handleOnInputReply}
@@ -44,5 +48,7 @@ export default function PostReply(props) {
         handleOnClick={handleOnClickCreateReply}
         createStatus={replyStatus}
       />
+    )
+
   )
 }

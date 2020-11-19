@@ -1,6 +1,6 @@
 import React from 'react'
 import { StyledList } from '../../theme/StyledListComponents'
-import PostItem from './PostItem'
+import PostListItem from './PostListItem'
 
 export default function PostList(props) {
   
@@ -9,7 +9,7 @@ export default function PostList(props) {
       {props.postData &&
         props.postData.map((post, index) => {
           return(
-            <PostItem key={index} post={post}/>
+            <PostListItem key={index} post={post}/>
           )
         })
       }

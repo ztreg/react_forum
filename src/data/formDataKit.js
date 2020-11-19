@@ -2,7 +2,7 @@ module.exports = {
   createCustomerFormData: (formData) => {
     const formarray = [
       {
-        label: 'title',
+        label: 'Title',
         input: {
           type: 'text',
           name: 'title',
@@ -11,7 +11,7 @@ module.exports = {
         }
       },
       {
-        label: 'content',
+        label: 'Content',
         input: {
           type: 'textarea',
           name: 'content',
@@ -20,7 +20,7 @@ module.exports = {
         }
       },
       {
-        label: 'category',
+        label: 'Category',
         select: {
           type: 'text',
           id: "category",
@@ -34,7 +34,7 @@ module.exports = {
   createReplyFormData: (formData) => {
     const formarray = [
       {
-        label: 'title',
+        label: 'Title',
         input: {
           type: 'text',
           name: 'title',
@@ -43,7 +43,7 @@ module.exports = {
         }
       },
       {
-        label: 'content',
+        label: 'Content',
         input: {
           type: 'textarea',
           name: 'content',

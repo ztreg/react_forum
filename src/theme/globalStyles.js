@@ -7,13 +7,13 @@ const GlobalStyle = createGlobalStyle`
   box-sizing: border-box;
 }  
 body {
-  background-color: ${(props) => props.theme.colors.MainDarkColor};
+  background-color: ${(props) => props.theme.colors.mainWhite};
   color: white;
   font-family: ${(props) => props.theme.fonts.text}
 }
 
 a {
-  color: red;
+  color: ${(props) => props.theme.colors.mainWhite};
   text-decoration: none;
 }
 

@@ -6,33 +6,38 @@ import { StyledForm } from '../../theme/StyledFormComponents';
 
 export default function GeneralisedForm(props) {
   const {categories} = useContext(ForumContext)
-  // console.log(categories);
+  const {countries} = useContext(ForumContext)
+  let SelectProps = props.selectedProps;
+  if(SelectProps === 'countries') {
+    SelectProps = countries
+  } else if(SelectProps === 'categories') {
+    SelectProps = categories
+  } else {
+    SelectProps = null
+  }
+
   let array = props.formArray
+
   return (
     <StyledForm>
       <ul>
-        {categories && (
+        {array && (
           array.map((formRow, index) => {
             return (
               <li key={index}>
                 <label htmlFor={formRow.label}>{formRow.label}</label>
-                {formRow.select && (
-                <>
-                  {console.log(formRow)}
+                {formRow.select && SelectProps && (
                   <select id={formRow.select.id} name={formRow.select.name} onChange={props.onChange}  >
                     <option defaultValue value="0">Choose Category</option>
-                    {categories.map((item, index) => {
+                    {SelectProps.map((item, index) => {
                       return (
                         <option key={index} value={item.country} >{item.title}</option>
                       )
-                      
                     })}
                   </select>
-                  </>
                 )}
                 
                 {!formRow.select && ( 
-                  <>
                   <input 
                     type={formRow.input.type}
                     name={formRow.input.name}
@@ -41,8 +46,6 @@ export default function GeneralisedForm(props) {
                     placeholder={formRow.input.placeholder}
                   >
                   </input>
-                  
-                </>
                 )}
               </li>
             )

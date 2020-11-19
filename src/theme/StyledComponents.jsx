@@ -2,18 +2,39 @@ import styled from 'styled-components'
 
 export const MainContainer = styled.div`
   padding: 30px;
+  @media(max-width: 400px) {
+    padding: 5px
+  }
 `
 
 export const StyledNavBar = styled.div`
-  text-decoration: none;
   width: 100%;
+  height: auto;
   padding: 30px;
   display: grid;
   border-radius: 15px;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   background-color:${({theme}) => theme.colors.SecondaryDarkColor};
   font-size: 1.3em;
-  
+  a {
+    :hover {
+      background-color: ${(props) => props.theme.colors.ThirdDarkColor};
+    }
+    text-align: center;
+  }
+  .userBox {
+    text-align: center;
+  }
+
+`
+export const StyledLoginBox = styled.div`
+  background-color:${({theme}) => theme.colors.SecondaryDarkColor};
+  border-radius: 5px;
+  width: 400px;
+  padding: 10px;
+  box-shadow: 5px 5px 10px 5px #1c0442;
+  text-align: center;
+  margin: 0 auto;
 `
 
 export const StyledInputLogin = styled.div`
@@ -31,7 +52,6 @@ export const StyledInputLogin = styled.div`
     padding: 10px;
   }
 `
-
 export const StyledPrimaryButton = styled.button`
   padding: 10px;
   background-color: ${({theme})=>theme.colors.ThirdDarkColor};
@@ -50,34 +70,11 @@ export const StyledPrimaryButton = styled.button`
   }
 `
 
-export const StyledLoginBox = styled.div`
-  border-radius: 5px;
-  width: 400px;
-  padding: 10px;
-  box-shadow: 5px 5px 15px 5px #000000;
-  text-align: center;
-  margin: 0 auto;
-`
-
-export const StyledAlertBox = styled.div`
-  padding: 20px;
-  background-color: #f44336;
+export const StyledReadMoreButton = styled.button`
+  border: none;
+  border-radius: 10px;
+  background-color: darkred;
   color: white;
-  margin-bottom: 15px;
-  display: none;
-
-  input[type=button] {
-    margin-left: 15px;
-    color: white;
-    font-weight: bold;
-    float: right;
-    font-size: 22px;
-    line-height: 20px;
-    cursor: pointer;
-    transition: 0.3s; 
-    :hover {
-      color: black;
-    }
-  }
-
+  padding: 10px;
+  font-size: 1.1em;
 `

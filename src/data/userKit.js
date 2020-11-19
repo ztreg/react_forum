@@ -12,7 +12,6 @@ const MEURL = `${ROOT_URL}/api/v1/me/`
 export default class {
 
   signup(signupPayload) {
-    console.log(signupPayload);
     const payload = {
       email: signupPayload.email,
       firstName: signupPayload.firstName,
@@ -48,15 +47,11 @@ export default class {
 
   checkToken() {
     let decoded = jwt.decode(this.getToken());
-    
-    if(decoded !== null) {
-        if (Date.now() >= decoded.exp * 1000) {
-            return false;
-          } else {
-            return true
-          }
-    } else {
-        return false
+    if(decoded && Date.now() <= decoded.exp * 1000) {
+      return true;;
+    } 
+     else {
+      return false
     }
    
   }

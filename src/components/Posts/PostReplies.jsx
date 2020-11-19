@@ -3,8 +3,7 @@ import forumKit from '../../data/forumKit'
 import { StyledItem, StyledList } from '../../theme/StyledListComponents'
 import PostReply from './PostReply'
 
-
-export default function PostRepliesList(props) {
+export default function PostReplies(props) {
   const {postID} = props
   const [postReplies, setPostReplies] = useState(null)
   const ForumKit = new forumKit()
@@ -31,11 +30,14 @@ export default function PostRepliesList(props) {
       {postReplies && (
         
         postReplies.map((replyItem, index) => {
+          var stripedHtml = replyItem.title.replace(/<[^>]+>/g, '');
+          var stripedHtml2 = replyItem.content.replace(/<[^>]+>/g, '');
           return(
+
             <StyledItem key={index}>
-              {/* <p>Author: {replyItem.author === null ? 'No author given' : replyItem.author.firstName}</p> */}
-              <p>{replyItem.title}</p>
-              <p>{replyItem.content}</p>
+              <p>Author: {replyItem.author === null ? 'No author given' : replyItem.author.firstName}</p>
+              <p>{stripedHtml}</p>
+              <p>{stripedHtml2}</p>
             </StyledItem>
           )
         })

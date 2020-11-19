@@ -1,4 +1,5 @@
 import React, { useContext, useEffect } from 'react'
+import { Link } from 'react-router-dom';
 import { UserContext } from '../../contexts/UserContext'
 import LogOut from '../Login/Logout';
 
@@ -19,14 +20,12 @@ export default function UserInfo() {
     <div className="userBox">
       {userData && (
         <>
+          <div>{userData.firstName} {userData.lastName}</div>
           <LogOut />
-          <div>Logged in as {userData.firstName} {userData.lastName}</div>
-          <div>{userData.email}</div>
+          {/* <div>{userData.email}</div> */}
         </>
       )}
-      {!userData && (
-        <p>Not logged in</p>
-      )}
+
     </div>
   )
 }
