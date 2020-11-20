@@ -4,6 +4,7 @@ import LoginInput from './LoginForm'
 import { UserContext } from '../../contexts/UserContext';
 import userKit from '../../data/userKit';
 import { StyledLoginBox, StyledPrimaryButton } from '../../theme/StyledComponents'
+import { FaSignInAlt } from 'react-icons/fa';
 
 export default function MainLogin() {
   const [emailInput, setEmailInput] = useState('Jonas6@hotmail.com');
@@ -55,7 +56,7 @@ export default function MainLogin() {
           setPasswordInput={setPasswordInput}
           loginStatus={loginStatus}
         ></LoginInput>
-        <StyledPrimaryButton onClick={handleOnClick}> Login </StyledPrimaryButton>
+        <StyledPrimaryButton onClick={handleOnClick}><FaSignInAlt /> Login </StyledPrimaryButton>
         </StyledLoginBox>
          
       </>

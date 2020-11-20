@@ -13,7 +13,7 @@ export const StyledNavBar = styled.div`
   padding: 30px;
   display: grid;
   border-radius: 15px;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   background-color:${({theme}) => theme.colors.SecondaryDarkColor};
   font-size: 1.3em;
   a {
@@ -72,8 +72,8 @@ export const StyledPrimaryButton = styled.button`
 
 export const StyledReadMoreButton = styled.button`
   border: none;
-  border-radius: 10px;
-  background-color: darkred;
+  border-radius: 15px;
+  background-color: red;
   color: white;
   padding: 10px;
   font-size: 1.1em;

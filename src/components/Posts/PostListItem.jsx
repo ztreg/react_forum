@@ -1,4 +1,5 @@
 import React from 'react'
+import { FaArrowAltCircleRight } from 'react-icons/fa';
 import ReactMarkdown from 'react-markdown';
 import { Link } from 'react-router-dom'
 import { StyledVerticalLine } from '../../theme/RandomStyledComponents';
@@ -25,13 +26,11 @@ export default function PostListItem(props) {
           <h1> <ReactMarkdown source={props.post.title} allowDangerousHtml /></h1>
           <p> Author: {props.post.author === null ? 'No author given' : fullName}</p>  
           <ReactMarkdown source={cuttedString} allowDangerousHtml/>
-          <Link to={`/posts/${props.post.id}`}><StyledReadMoreButton>Read more...</StyledReadMoreButton></Link>
+          <Link to={`/posts/${props.post.id}`}><StyledReadMoreButton>READ MORE   <FaArrowAltCircleRight /></StyledReadMoreButton></Link>
           
         </div>
-        <StyledVerticalLine>.</StyledVerticalLine>
+        <StyledVerticalLine></StyledVerticalLine>
         <div className="sidePart">
-        
-       
           <p>Views {props.post.viewCount}</p>  
           <p>Country: {props.post.country}</p>  
           <p>CreatedAt: {props.post.createdAt}</p> 

@@ -11,8 +11,6 @@ export const StyledList = styled.div`
 `
 
 export const StyledItem = styled.div`
-  /* box-shadow: 5px 5px 15px 5px ${({ theme }) => theme.colors.ThirdDarkColor}; */
-
   display: flex;
   flex-direction: column;
   background-color: ${({ theme }) => theme.colors.ThirdDarkColor};
@@ -21,10 +19,13 @@ export const StyledItem = styled.div`
   font-size: 1rem;
   font-size: 1.1em;
   border-radius: 5px;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
 `
 
 export const StyledDetailsItem = styled(StyledItem)`
   background-color: ${({ theme }) => theme.colors.someBlueGrey1};
+
   align-items: center;
   > * {
     width: 60%;
@@ -37,6 +38,11 @@ export const StyledDetailsItem = styled(StyledItem)`
     border-bottom: 1px solid white;
     text-align: center;
     padding: 10px 20px 30px;
+  }
+  h1 {
+    @media(max-width: 500px) {
+      font-size: 1.5em;
+    }
   }
   .content {
     border-bottom: 1px solid white;
@@ -57,13 +63,20 @@ export const StyledNewsListItem = styled(StyledDetailsItem)`
     all: unset;
   }
   display: grid; 
-   grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
-  .mainPart {
-    margin: 0 auto;
-  }
+   grid-template-columns: repeat(auto-fill, minmax(500px, 1fr));
+   @media(max-width: 1580px) {
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+   }
 
-  .sidePart {
+  .sidePart, .mainPart {
     margin: 0 auto;
+    > * {
+      margin: 5px; 
+    }
   }
   
+`
+
+export const StyledMessageItem = styled(StyledItem) `
+    float: ${props => props.position || 'right'};
 `

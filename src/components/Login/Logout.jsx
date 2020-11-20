@@ -3,6 +3,7 @@ import { UserContext } from '../../contexts/UserContext'
 import userKit from '../../data/userKit'
 import { useHistory } from "react-router-dom";
 import { StyledPrimaryButton } from '../../theme/StyledComponents';
+import { FaShuttleVan, FaSignOutAlt } from 'react-icons/fa';
 
 export default function LogOut() {
   const {userData, setUserData} = useContext(UserContext)
@@ -18,7 +19,7 @@ export default function LogOut() {
   return (
     <>
       {userData && (
-       <StyledPrimaryButton onClick={handleOnClickLogout}>Logout</StyledPrimaryButton>
+       <StyledPrimaryButton onClick={handleOnClickLogout}><FaSignOutAlt />Logout</StyledPrimaryButton>
       )}
    </>
   )
