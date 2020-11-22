@@ -1,12 +1,12 @@
 
 ## H2
 TO FIX
-..*
-..* Side Part Styling on NewsList - [ ]
-..* Side Part Styling on Details - [ ]
-..* Reply left/right if I sent - [ ]
-..* Time since update & create - [x]
-..* Homepage of some sort - [ ]
+
+1. Side Part Styling on NewsList - [ ]
+2. Side Part Styling on Details - [ ]
+3. Reply left/right if I sent - [ ]
+4. Time since update & create - [x]
+5. Homepage of some sort - [ ]
 
 ### `yarn start`
 
