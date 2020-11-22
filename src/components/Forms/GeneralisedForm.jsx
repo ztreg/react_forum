@@ -1,5 +1,5 @@
 import React, { useContext } from 'react'
-import { FaGofore, FaPinterestSquare, FaSignal, FaSignOutAlt, FaStaylinked } from 'react-icons/fa';
+import {  FaSignOutAlt } from 'react-icons/fa';
 import { ForumContext } from '../../contexts/ForumContext';
 import { StyledPrimaryButton } from '../../theme/StyledComponents';
 import { StyledForm } from '../../theme/StyledFormComponents';
@@ -53,7 +53,7 @@ export default function GeneralisedForm(props) {
           })  
        )}
       </ul>
-    <StyledPrimaryButton onClick={props.handleOnClick}>{props.buttonText}<FaSignOutAlt /></StyledPrimaryButton>
+    <StyledPrimaryButton onClick={props.handleOnClick}><FaSignOutAlt />{props.buttonText}</StyledPrimaryButton>
       <p>{props.createStatus}</p>
     </StyledForm>
   )

@@ -1,8 +1,9 @@
 import React from 'react'
 import ReactMarkdown from 'react-markdown';
 import calculator from '../../data/calculator';
-import { StyledDetailsItem, StyledSingleItem } from '../../theme/StyledListComponents';
+import { StyledDetailsItem } from '../../theme/StyledListComponents';
 import PostRepliesList from './PostReplies';
+import TimeAgo from 'timeago-react';
 
 export default function PostDetailItem(props) {
   const {detailItem } = props
@@ -25,13 +26,21 @@ export default function PostDetailItem(props) {
         <ReactMarkdown className="content" source={detailItem.content} allowDangerousHtml />
         
         <div className="postInfo">
-          <p>{detailItem.createdAt}</p>
           <p> {!detailItem.author ? 'No author given' : 'Written by: ' + fullName} from {country && country}</p>  
           <p>{authorEmail ? 'Contact Author : ' + authorEmail: 'No email given'}</p>
 
-          <p>This Article was created at {detailItem.createdAt}</p>
+          <p>This Article was created <TimeAgo 
+            datetime={detailItem.createdAt}
+            locale='sv-SV'
+          /></p>
           <p>{Date.parse(detailItem.createdAt)}</p>
-          <p>This Article was updated at {detailItem.updatedAt}</p>
+          <p>This Article was last updated 
+            <TimeAgo 
+            datetime={detailItem.updatedAt}
+            locale='sv-SV'
+            />
+            </p>
+
           <p>This Article has {detailItem.countResponses} reponses.</p>
 
           <p>This article is {!detailItem.isClosed ? 'open' : 'closed'}</p>

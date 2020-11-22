@@ -20,6 +20,7 @@ export default function MainLogin() {
 	};
 
 	function handleLogin (email, password) {
+    setLoginStatus('Loading...')
 		UserKit.login(email, password)
 			.then(res => res.json())
 			.then(data => {

@@ -6,7 +6,7 @@ import formDataKit from '../data/formDataKit'
 import forumKit from '../data/forumKit'
 
 export default function PostCreate() {
-  let history = useHistory()
+
   const {categories, setCategories} = useContext(ForumContext)
   const [createStatus, setCreateStatus] = useState('')
   const [createPostData, setCreatePostData] = useState({
@@ -14,9 +14,11 @@ export default function PostCreate() {
     content: '',
     category: ''
   })
+
   const formArray = formDataKit.createCustomerFormData(createPostData)
   const ForumKit = new forumKit()
-
+  let history = useHistory()
+  
   function handleInputOnChange(e) {
     setCreatePostData({...createPostData, [e.target.name]: e.target.value})
   }
@@ -35,8 +37,15 @@ export default function PostCreate() {
     ForumKit.publishPost(createPostData)
     .then(res => res.json())
     .then(data => {
-      setCreateStatus('Post created!')
-      history.push('/posts')
+      console.log(data);
+      if(data.id) {
+        setCreateStatus('Post created!')
+        history.push('/posts')
+      } else {
+        for (const [key, value] of Object.entries(data)) {
+          setCreateStatus(`${value}`)
+        }
+      }
     })
     .catch(e => console.log(e))
   }
