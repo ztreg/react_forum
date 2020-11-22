@@ -1,13 +1,14 @@
 import React from 'react'
 import PostDetail from '../components/Posts/PostDetail'
-
+import { StyledHero } from '../theme/StyledComponents'
+import image from '../heroImages/img3.jpg'
 export default function PostDetails(props) {
 
   const postID = props.match.params.id
 
   return (
     <div>
-      <p>Detail Page for {postID}</p>
+      <StyledHero image={image}>  SOMETHING</StyledHero>
         <PostDetail postID={postID} />
     </div>
   )

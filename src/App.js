@@ -14,7 +14,7 @@ import PostDetails from './pages/PostDetails';
 import Posts from './pages/Posts';
 import Signup from './pages/Signup';
 import GlobalStyle from './theme/globalStyles';
-import { MainContainer } from './theme/StyledComponents';
+import { MainContainer, StyledHero } from './theme/StyledComponents';
 
 function App() {
   const ForumKit = new forumKit()
@@ -50,6 +50,7 @@ function App() {
         <UserContext.Provider value={{userData, setUserData}}>
           <ForumContext.Provider value={{countries, categories, setCategories, postData, setPostData, repliesData, setRepliesData}}>
             <Navbar />
+            {/* <StyledHero /> */}
             <Switch>
               <Route exact path="/" component={Home}></Route>
               <Route exact path="/signup" component={Signup}></Route>

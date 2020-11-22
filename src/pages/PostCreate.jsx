@@ -4,6 +4,8 @@ import GeneralisedForm from '../components/Forms/GeneralisedForm'
 import { ForumContext } from '../contexts/ForumContext'
 import formDataKit from '../data/formDataKit'
 import forumKit from '../data/forumKit'
+import { StyledHero } from '../theme/StyledComponents'
+import image from '../heroImages/img2signup.jpg'
 
 export default function PostCreate() {
 
@@ -18,7 +20,7 @@ export default function PostCreate() {
   const formArray = formDataKit.createCustomerFormData(createPostData)
   const ForumKit = new forumKit()
   let history = useHistory()
-  
+
   function handleInputOnChange(e) {
     setCreatePostData({...createPostData, [e.target.name]: e.target.value})
   }
@@ -56,8 +58,8 @@ export default function PostCreate() {
   }, [])
 
   return (
-    <div>
-      <h4>Create post Page</h4>
+    <>
+    <StyledHero image={image}> VOICE YOUR THOUGHTS</StyledHero>
       {formArray && (
         <GeneralisedForm 
           formArray={formArray}
@@ -69,6 +71,6 @@ export default function PostCreate() {
         />
       )}
 
-    </div>
+    </>
   )
 }

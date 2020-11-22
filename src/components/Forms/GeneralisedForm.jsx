@@ -22,7 +22,7 @@ export default function GeneralisedForm(props) {
   return (
     <StyledForm>
       <ul>
-        {array && (
+        {SelectProps && (
           array.map((formRow, index) => {
             return (
               <li key={index}>

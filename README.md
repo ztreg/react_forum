@@ -1,6 +1,4 @@
-
-## H2
-TO FIX
+## TO FIX
 
 1. Side Part Styling on NewsList - [ ]
 2. Side Part Styling on Details - [ ]

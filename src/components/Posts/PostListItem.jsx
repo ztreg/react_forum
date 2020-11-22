@@ -35,6 +35,7 @@ export default function PostListItem(props) {
         <div className="sidePart">
           <p>Views {props.post.viewCount}</p>  
           <p>Country: {props.post.country}</p>  
+          <p>This article is {!props.post.isClosed ? 'open' : 'closed'}</p>
           <p>Created:           
             <TimeAgo 
             datetime={props.post.createdAt}

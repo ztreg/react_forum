@@ -2,7 +2,8 @@ import React, { useContext, useEffect } from 'react'
 import PostList from '../components/Posts/PostList'
 import { ForumContext } from '../contexts/ForumContext'
 import forumKit from '../data/forumKit'
-
+import { StyledHero } from '../theme/StyledComponents'
+import image from '../heroImages/img3.jpg'
 export default function Posts(props) {
 
   const {postData, setPostData} = useContext(ForumContext)
@@ -25,11 +26,11 @@ export default function Posts(props) {
   }, [])
 
   return (
-    <div>
-      <h4>Posts</h4>
+    <>
+    <StyledHero image={image}>LATEST NEWS</StyledHero>
       {postData && (
         <PostList postData={postData} />
       )}
-    </div>
+    </>
   )
 }

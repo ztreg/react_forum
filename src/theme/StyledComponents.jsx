@@ -1,6 +1,7 @@
 import styled from 'styled-components'
-
+import { StyledDetailsItem } from './StyledListComponents'
 export const MainContainer = styled.div`
+  
   padding: 30px;
   @media(max-width: 400px) {
     padding: 5px
@@ -60,7 +61,7 @@ export const StyledPrimaryButton = styled.button`
   font-size: 1.2rem;
   border: none;
   border-radius: 15px;
-  display: inline-block;
+  /* display: inline-block; */
   &:hover{
     cursor: pointer;
     background-color: ${({theme})=>theme.colors.MainDarkColor};
@@ -77,4 +78,28 @@ export const StyledReadMoreButton = styled.button`
   color: white;
   padding: 10px;
   font-size: 1.1em;
+  cursor: pointer;
+  margin: 10px;
+`
+export const StyledHomePage = styled.div`
+  background-color: ${({theme})=>theme.colors.FourthDarkColor};
+  padding: 40px;
+  width: 100%;
+  height: auto;
+`
+// export const HomePageContent = styled(StyledDetailsItem) `
+// `
+
+
+export const StyledHero = styled.div `
+  width: 100%;
+  height: 150px;
+  margin: 10px 0;
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 3em;
+  background-image: url(${props => props.image})
+
 `
