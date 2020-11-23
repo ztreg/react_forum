@@ -8,7 +8,7 @@ export default function PostDetails(props) {
 
   return (
     <div>
-      <StyledHero image={image}>  SOMETHING</StyledHero>
+      <StyledHero image={image}> DETAILS </StyledHero>
         <PostDetail postID={postID} />
     </div>
   )

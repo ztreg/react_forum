@@ -47,6 +47,15 @@ export const StyledForm = styled.div`
     flex: 1 0 180px;
     padding: 5px;
   }
+  @media(max-width: 400px){
+    box-shadow: none;
+    min-width: 310px;
+    margin: 0;
+  }
+  
+  .errorMessage {
+    text-align: right;
+  }
 `
 
 export const StyledReplyForm = styled(StyledForm)`

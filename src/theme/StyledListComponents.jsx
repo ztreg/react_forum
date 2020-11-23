@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 
 export const StyledList = styled.div`
   align-items: center;
@@ -9,6 +9,7 @@ export const StyledList = styled.div`
   color: white;
   margin-top: 20px;
 `
+
 
 export const StyledItem = styled.div`
   display: flex;
@@ -22,6 +23,9 @@ export const StyledItem = styled.div`
   overflow-wrap: break-word;
   word-wrap: break-word;
 `
+export const StyledRepliesList = styled(StyledList) `
+ 
+`
 
 export const StyledDetailsItem = styled(StyledItem)`
   background-color: ${({ theme }) => theme.colors.someBlueGrey1};
@@ -32,6 +36,10 @@ export const StyledDetailsItem = styled(StyledItem)`
     @media(max-width: 600px) {
       width: 90%;
     }
+  }
+  .topInfo {
+    display: flex;
+    justify-content: space-between;
   }
   h2 {
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
@@ -53,18 +61,23 @@ export const StyledDetailsItem = styled(StyledItem)`
     text-align: right;
     font-weight: 100; 
   }
-
+  img, iframe {
+    width: 80%;
+    height: auto;
+    margin: 0 auto;
+  }
   color: whitesmoke;
 
 `
 export const StyledNewsListItem = styled(StyledDetailsItem)`
+  /* width: 80%; */
   background-color:  ${({ theme }) => theme.colors.someBlueGrey};
   h2 {
     all: unset;
   }
   display: grid; 
-   grid-template-columns: repeat(auto-fill, minmax(500px, 1fr));
-   @media(max-width: 1580px) {
+   grid-template-columns: repeat(auto-fill, minmax(33%, 1fr));
+   @media(max-width: 1000px) {
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
    }
 
@@ -77,6 +90,25 @@ export const StyledNewsListItem = styled(StyledDetailsItem)`
   
 `
 
+export const HomePageContent = styled(StyledList) `
+  width: 80%;
+  background-color: inherit;
+  justify-content: center;
+  align-items: center;
+  grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+`
+
 export const StyledMessageItem = styled(StyledItem) `
-    float: ${props => props.position || 'right'};
+  margin: 0 auto;
+  width: 80%;
+  box-shadow: 5px 5px 1px 5px rgba(0,0,0,0.50);
+
+  ${props => props.BGcolor !== '' && css`
+      .replyText {
+        display: flex;
+        justify-content: flex-end;
+      }
+      background-color: ${props => props.BGcolor}
+    `}
+
 `

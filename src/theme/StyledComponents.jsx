@@ -11,13 +11,14 @@ export const MainContainer = styled.div`
 export const StyledNavBar = styled.div`
   width: 100%;
   height: auto;
-  padding: 30px;
+  padding: 20px 0 20px 0;
   display: grid;
   border-radius: 15px;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   background-color:${({theme}) => theme.colors.SecondaryDarkColor};
   font-size: 1.3em;
   a {
+   
     :hover {
       background-color: ${(props) => props.theme.colors.ThirdDarkColor};
     }
@@ -36,6 +37,9 @@ export const StyledLoginBox = styled.div`
   box-shadow: 5px 5px 10px 5px #1c0442;
   text-align: center;
   margin: 0 auto;
+  @media(max-width: 470px) {
+    width: 100%;
+  }
 `
 
 export const StyledInputLogin = styled.div`
@@ -61,7 +65,6 @@ export const StyledPrimaryButton = styled.button`
   font-size: 1.2rem;
   border: none;
   border-radius: 15px;
-  /* display: inline-block; */
   &:hover{
     cursor: pointer;
     background-color: ${({theme})=>theme.colors.MainDarkColor};
@@ -86,12 +89,11 @@ export const StyledHomePage = styled.div`
   padding: 40px;
   width: 100%;
   height: auto;
+  text-align: center;
 `
-// export const HomePageContent = styled(StyledDetailsItem) `
-// `
-
 
 export const StyledHero = styled.div `
+  background-image: url(${props => props.image});
   width: 100%;
   height: 150px;
   margin: 10px 0;
@@ -100,6 +102,8 @@ export const StyledHero = styled.div `
   justify-content: center;
   align-items: center;
   font-size: 3em;
-  background-image: url(${props => props.image})
+  @media(max-width: 400px) {
+    font-size: 2em;
+  }
 
 `

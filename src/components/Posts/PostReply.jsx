@@ -11,6 +11,7 @@ export default function PostReply(props) {
     content: '',
   })
   const [replyStatus, setReplyStatus] = useState(null)
+  const [errorType, setErrorType] = useState('')
   const formArray = formDataKit.createReplyFormData(replyFormData)
 
   function handleOnInputReply(e) {
@@ -18,22 +19,23 @@ export default function PostReply(props) {
   }
 
   function handleOnClickCreateReply() {
-    const payload = {
-      ...replyFormData,
-      parent: postID
-    }
+    setReplyStatus('Sending...')
+      const payload = {
+        ...replyFormData,
+        parent: postID
+      }
     ForumKit.replyToPost(payload)
     .then(res => res.json())
     .then(data => {
       if(data.hasOwnProperty('author')) {
-        console.log(data.author);
         setReplyStatus('Reply sent')
         let copy =  [...postReplies]
         copy.push(data)
         setPostReplies(copy);
       } else {
         for (const [key, value] of Object.entries(data)) {
-          setReplyStatus(`${key} : ${value}`)
+          setErrorType(`${key}`)
+          setReplyStatus(`${value}`)
         }
       }
     })
@@ -46,7 +48,9 @@ export default function PostReply(props) {
         onChange={handleOnInputReply}
         buttonText='Send Reply'
         handleOnClick={handleOnClickCreateReply}
-        createStatus={replyStatus}
+        status={replyStatus}
+        errorType={errorType}
+        selectedProps='categories'
       />
     )
 

@@ -1,13 +1,17 @@
 import React, {  useContext, useEffect, useState } from 'react'
+import { FaWindowClose } from 'react-icons/fa'
+import ReactMarkdown from 'react-markdown'
 import { UserContext } from '../../contexts/UserContext'
 import forumKit from '../../data/forumKit'
-import { StyledItem, StyledList, StyledMessageItem } from '../../theme/StyledListComponents'
+import { StyledPrimaryButton } from '../../theme/StyledComponents'
+import { StyledMessageItem, StyledRepliesList } from '../../theme/StyledListComponents'
 import PostReply from './PostReply'
 
 export default function PostReplies(props) {
   const {postID} = props
   const [postReplies, setPostReplies] = useState(null)
-  const [position, setPosition] = useState('right')
+  const [hide, setHide] = useState(true)
+  let BGcolor = ''
   const {userData} = useContext(UserContext)
   const ForumKit = new forumKit()
 
@@ -21,6 +25,10 @@ export default function PostReplies(props) {
     }
   }
 
+  function showOrHide() {
+    setHide(!hide)
+  }
+
   useEffect(() => {
     fetchReplies()
   // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -28,32 +36,36 @@ export default function PostReplies(props) {
 
   return (
     <>
-      <StyledList>
-      <h2>Replies</h2>
+      <StyledRepliesList>
+      <StyledPrimaryButton onClick={showOrHide}>{hide ? 'Create Comment' : <FaWindowClose />}</StyledPrimaryButton>
+        {postReplies && !hide && (
+          <PostReply 
+            postID={postID} 
+            postReplies={postReplies} 
+            setPostReplies={setPostReplies}
+            hide={hide}
+          />
+        )}
       {postReplies && (
         postReplies.reverse().map((replyItem, index) => {
-          // replyItem.author.email === userData.email && setPosition('left')
-          var stripedHtml = replyItem.title.replace(/<[^>]+>/g, '');
-          var stripedHtml2 = replyItem.content.replace(/<[^>]+>/g, '');
+        userData.email === replyItem.author.email ? BGcolor = 'green' : BGcolor = ''
+          
           return(
-            <StyledMessageItem key={index} position={position}>
-              <h4>{stripedHtml}</h4>
-              <p>{stripedHtml2}</p>
-              <p>Reply by: {replyItem.author === null ? 'No author given' : replyItem.author.firstName}</p>
+            <StyledMessageItem BGcolor={BGcolor} key={index}>
+              <div  className="replyText">
+                <div>
+                  <ReactMarkdown source={replyItem.title} allowDangerousHtml />
+                  <ReactMarkdown source={replyItem.content} allowDangerousHtml />
+                  <p>Reply by: {replyItem.author === null ? 'No author given' : replyItem.author.firstName}</p>
+                </div>
+              </div>
             </StyledMessageItem>
           )
         })
   
       )}
-    </StyledList>
-    
-    {postReplies && (
-      <PostReply 
-        postID={postID} 
-        postReplies={postReplies} 
-        setPostReplies={setPostReplies}
-      />
-    )}
+    </StyledRepliesList>
+
     </>
   )
 }

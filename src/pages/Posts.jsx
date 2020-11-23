@@ -8,8 +8,9 @@ export default function Posts(props) {
 
   const {postData, setPostData} = useContext(ForumContext)
   const ForumKit = new forumKit()
-  function fetchPostData() {
-    if(!postData) {
+
+  function fetchPostData(force) {
+    if(!postData || force === true) {
       ForumKit.fetchPosts()
       .then(res => res.json())
       .then(data => {
@@ -22,7 +23,9 @@ export default function Posts(props) {
   }
 
   useEffect(() => {
-    fetchPostData()
+    setTimeout(() => {
+      fetchPostData()
+    }, 1000);
   }, [])
 
   return (

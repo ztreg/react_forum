@@ -1,5 +1,5 @@
 import React from 'react'
-import { FaArrowAltCircleRight } from 'react-icons/fa';
+import { FaArrowAltCircleRight, FaCheck, FaCommentAlt, FaCross, FaRegEye } from 'react-icons/fa';
 import ReactMarkdown from 'react-markdown';
 import { Link } from 'react-router-dom'
 import { StyledVerticalLine } from '../../theme/RandomStyledComponents';
@@ -26,22 +26,21 @@ export default function PostListItem(props) {
       <>
         <div className="mainPart">
           <h1> <ReactMarkdown source={props.post.title} allowDangerousHtml /></h1>
-          <p> Author: {props.post.author === null ? 'No author given' : fullName}</p>  
+         
           <ReactMarkdown source={cuttedString} allowDangerousHtml/>
           <Link to={`/posts/${props.post.id}`}><StyledReadMoreButton>READ MORE   <FaArrowAltCircleRight /></StyledReadMoreButton></Link>
 
         </div>
         <StyledVerticalLine></StyledVerticalLine>
         <div className="sidePart">
-          <p>Views {props.post.viewCount}</p>  
-          <p>Country: {props.post.country}</p>  
-          <p>This article is {!props.post.isClosed ? 'open' : 'closed'}</p>
-          <p>Created:           
-            <TimeAgo 
+        <strong> Author: {props.post.author === null ? 'No author given' : fullName}</strong> 
+          <p>Created: <TimeAgo 
             datetime={props.post.createdAt}
             locale='sv-SV'
           /></p>
-          <p>Replies: {props.post.countResponses}</p>
+          <p><FaRegEye /> {props.post.viewCount}</p>  
+          <p><FaCommentAlt />: {props.post.countResponses}</p>
+          <p>PostStatus: {!props.post.isClosed ? <FaCheck /> : <FaCross /> }</p>
         </div>
       
       </>

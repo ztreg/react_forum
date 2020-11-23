@@ -4,10 +4,12 @@ import GeneralisedForm from '../components/Forms/GeneralisedForm'
 import userKit from '../data/userKit'
 import formDataKit from '../data/formDataKit'
 import { StyledHero } from '../theme/StyledComponents'
+import image from '../heroImages/img3.jpg'
 
 export default function Signup() {
   const UserKit = new userKit()
   const [signupProgress, setSignupProgress] = useState(null)
+  const [errorType, setErrorType] = useState('')
   const [signupFormData, setSignupFormData] = useState({
     firstName: '',
     lastName: '',
@@ -23,11 +25,14 @@ export default function Signup() {
     UserKit.signup(signupFormData)
     .then(res => res.json())
     .then(data => {
-      if(data.hasOwnProperty('firstName')){
+      if(data.hasOwnProperty('id')){
+        console.log(data);
         alert("You are now signed up")
         history.push('/login')
       } else {
         for (const [key, value] of Object.entries(data)) {
+          
+          setErrorType(`${key}`)
           setSignupProgress(`${value}`)
         }
       }
@@ -40,14 +45,15 @@ export default function Signup() {
 
   return (
     <div>
-      <StyledHero> SIGNUP</StyledHero>
+      <StyledHero image={image}> SIGNUP</StyledHero>
       {formArray && (
         <GeneralisedForm 
           formArray={formArray}
           buttonText='Create Account'
           onChange={handleInputOnChange}
           handleOnClick={handlOnClickSignup}
-          createStatus={signupProgress}
+          status={signupProgress}
+          errorType={errorType}
           selectedProps='countries'
       />
       )}

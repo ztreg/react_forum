@@ -27,10 +27,10 @@ export default function PostDetail(props) {
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
   return (
-    <div>
+    <>
       {postItem && (
         <PostDetailItem detailItem={postItem}/>
       )}
-    </div>
+    </>
   )
 }

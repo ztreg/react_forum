@@ -1,10 +1,14 @@
 ## TO FIX
 
-1. Side Part Styling on NewsList - [ ]
-2. Side Part Styling on Details - [ ]
-3. Reply left/right if I sent - [ ]
+1. Side Part Styling on NewsList - [x]
+2. Side Part Styling on Details - [x]
+3. Reply left/right if I sent - [x]
 4. Time since update & create - [x]
-5. Homepage of some sort - [ ]
+5. Homepage of some sort - [x]
+6. Reply ReactMarkDown - [x]
+7. Reply form "open/close" - [x]
+8. Form Output Controller - [x]
+9. Hämta alla posts varje minut - [ ]
 
 ### `yarn start`
 

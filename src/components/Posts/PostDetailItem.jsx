@@ -4,6 +4,7 @@ import calculator from '../../data/calculator';
 import { StyledDetailsItem } from '../../theme/StyledListComponents';
 import PostRepliesList from './PostReplies';
 import TimeAgo from 'timeago-react';
+import { FaCheck, FaCommentAlt, FaCross, FaRegEye } from 'react-icons/fa';
 
 export default function PostDetailItem(props) {
   const {detailItem } = props
@@ -21,31 +22,30 @@ export default function PostDetailItem(props) {
   return (
     <>
       <StyledDetailsItem>
-        <p>This article has {detailItem.countResponses} replies</p>
+        <div className="topInfo">
+          <span><FaRegEye /> {detailItem.viewCount}</span>
+          <span><FaCommentAlt />: {detailItem.countResponses}</span>
+        </div>
+       
         <h2><ReactMarkdown source={detailItem.title} allowDangerousHtml /></h2>
-        <ReactMarkdown className="content" source={detailItem.content} allowDangerousHtml />
+        <p> {!detailItem.author ? 'No author given' : 'Written by: ' + fullName} from {country && country}</p>
+        <p><ReactMarkdown className="content" source={detailItem.content} allowDangerousHtml /></p>
         
-        <div className="postInfo">
-          <p> {!detailItem.author ? 'No author given' : 'Written by: ' + fullName} from {country && country}</p>  
-          <p>{authorEmail ? 'Contact Author : ' + authorEmail: 'No email given'}</p>
+        <div className="postInfo"> 
 
           <p>This Article was created <TimeAgo 
             datetime={detailItem.createdAt}
             locale='sv-SV'
-          /></p>
-          <p>{Date.parse(detailItem.createdAt)}</p>
-          <p>This Article was last updated 
-            <TimeAgo 
+            /></p>
+          <p>Last Update: <TimeAgo 
             datetime={detailItem.updatedAt}
             locale='sv-SV'
             />
             </p>
 
-          <p>This Article has {detailItem.countResponses} reponses.</p>
-
-          <p>This article is {!detailItem.isClosed ? 'open' : 'closed'}</p>
+            <p>{authorEmail ? 'Contact Author : ' + authorEmail: 'No email given'}</p>
+          <p>PostStatus: {!detailItem.isClosed ? <FaCheck /> : <FaCross /> }</p>
           <p>You are {detailItem.userSubscribed ? 'Subscribed' : 'Not subscribed' } to this article.</p>
-          <p>Viewcount on article: {detailItem.viewCount}</p>
         </div>
         
       </StyledDetailsItem>

@@ -23,26 +23,14 @@ export const StyledAlertBox = styled.div`
 
 `
 
-export const StyledVerticalLine = styled.span`
+export const StyledVerticalLine = styled.div`
   max-width: 1px;
   height: 400px;
   margin: 0 auto;
   background-color: white;
-  @media(max-width: 930px) {
-    display: none;
-  }
+
   @media(max-width: 820px) {
-    display: block;
-    max-height: 1px;
-    width: 100%;
+ display: none;
   }
 
 `
-
-// export const StyledHorizontalLine = styled.span`
-//   max-height: 1px;
-//   width: 100%;
-//   @media(min-width: 1100px) {
-//       display: none;
-//      }
-// `
