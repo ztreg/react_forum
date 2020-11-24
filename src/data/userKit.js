@@ -19,7 +19,6 @@ export default class {
       password: signupPayload.password,
       country: signupPayload.country
     }
-    console.log(payload);
     return fetch(SIGNUPURL, {
       method: 'POST',
       body: JSON.stringify(payload),

@@ -22,9 +22,7 @@ export default function BeforeForm(props) {
   }, [])
   return (
     <div>
-      {categories && (
-        props.children
-      )}
+      {props.children}
     </div>
   )
 }

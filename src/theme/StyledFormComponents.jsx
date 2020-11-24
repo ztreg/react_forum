@@ -55,6 +55,7 @@ export const StyledForm = styled.div`
   
   .errorMessage {
     text-align: right;
+    text-decoration: underline;
   }
 `
 

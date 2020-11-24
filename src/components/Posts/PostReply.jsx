@@ -12,6 +12,7 @@ export default function PostReply(props) {
   })
   const [replyStatus, setReplyStatus] = useState(null)
   const [errorType, setErrorType] = useState('')
+  const [successStatus, setSuccessStatus] = useState('')
   const formArray = formDataKit.createReplyFormData(replyFormData)
 
   function handleOnInputReply(e) {
@@ -28,12 +29,14 @@ export default function PostReply(props) {
     .then(res => res.json())
     .then(data => {
       if(data.hasOwnProperty('author')) {
+        setSuccessStatus('Reply sent')
         setReplyStatus('Reply sent')
         let copy =  [...postReplies]
         copy.push(data)
-        setPostReplies(copy);
+        setPostReplies(copy);;
       } else {
         for (const [key, value] of Object.entries(data)) {
+          setSuccessStatus('')
           setErrorType(`${key}`)
           setReplyStatus(`${value}`)
         }
@@ -49,6 +52,7 @@ export default function PostReply(props) {
         buttonText='Send Reply'
         handleOnClick={handleOnClickCreateReply}
         status={replyStatus}
+        successStatus={successStatus}
         errorType={errorType}
         selectedProps='categories'
       />

@@ -24,11 +24,12 @@ export const StyledItem = styled.div`
   word-wrap: break-word;
 `
 export const StyledRepliesList = styled(StyledList) `
- 
+  
 `
 
 export const StyledDetailsItem = styled(StyledItem)`
   background-color: ${({ theme }) => theme.colors.someBlueGrey1};
+
 
   align-items: center;
   > * {
@@ -70,7 +71,9 @@ export const StyledDetailsItem = styled(StyledItem)`
 
 `
 export const StyledNewsListItem = styled(StyledDetailsItem)`
-  /* width: 80%; */
+  ${props => props.isPinned == true && css`
+    border: 20px solid red;
+  `}
   background-color:  ${({ theme }) => theme.colors.someBlueGrey};
   h2 {
     all: unset;
@@ -101,7 +104,7 @@ export const HomePageContent = styled(StyledList) `
 export const StyledMessageItem = styled(StyledItem) `
   margin: 0 auto;
   width: 80%;
-  box-shadow: 5px 5px 1px 5px rgba(0,0,0,0.50);
+  box-shadow: 5px 5px 1px 5px #2c0c0c;
 
   ${props => props.BGcolor !== '' && css`
       .replyText {

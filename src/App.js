@@ -26,7 +26,6 @@ function App() {
   const [repliesData, setRepliesData] = useState(null)
 
   function fetchCountries() {
-
     if(!countries) {
       ForumKit.fetchCountries()
       .then(res => res.json())

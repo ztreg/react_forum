@@ -60,8 +60,8 @@ module.exports = {
         label: 'First Name',
         input: {
           type: 'text',
-          name: 'firstname',
-          value: formData['firstname'],
+          name: 'firstName',
+          value: formData['firstName'],
           placeholder: 'Enter your first name'
         }
       },

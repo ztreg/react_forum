@@ -15,7 +15,7 @@ export default function Signup() {
     lastName: '',
     email: '',
     password: '',
-    country: '',
+    country: ''
   })
 
   const formArray = formDataKit.createSignupFormData(signupFormData)
@@ -23,18 +23,16 @@ export default function Signup() {
 
   function handlOnClickSignup () {
     UserKit.signup(signupFormData)
-    .then(res => res.json())
-    .then(data => {
-      if(data.hasOwnProperty('id')){
-        console.log(data);
-        alert("You are now signed up")
-        history.push('/login')
-      } else {
+    .then(async res => {
+      if(res.status === 400) {
+        let data = await res.json()
         for (const [key, value] of Object.entries(data)) {
-          
           setErrorType(`${key}`)
           setSignupProgress(`${value}`)
         }
+      } else {
+        alert("You are now signed up")
+        history.push('/login')
       }
     })
   }

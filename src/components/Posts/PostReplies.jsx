@@ -20,7 +20,7 @@ export default function PostReplies(props) {
       ForumKit.fetchReplyList(postID)
       .then(res => res.json())
       .then(data => {
-        setPostReplies(data.results)
+        setPostReplies((data.results).reverse())
       })
     }
   }
@@ -37,7 +37,7 @@ export default function PostReplies(props) {
   return (
     <>
       <StyledRepliesList>
-      <StyledPrimaryButton onClick={showOrHide}>{hide ? 'Create Comment' : <FaWindowClose />}</StyledPrimaryButton>
+        <StyledPrimaryButton onClick={showOrHide}>{hide ? 'Create Comment' :  <FaWindowClose /> }</StyledPrimaryButton>
         {postReplies && !hide && (
           <PostReply 
             postID={postID} 
@@ -47,9 +47,8 @@ export default function PostReplies(props) {
           />
         )}
       {postReplies && (
-        postReplies.reverse().map((replyItem, index) => {
-        userData.email === replyItem.author.email ? BGcolor = 'green' : BGcolor = ''
-          
+        postReplies.map((replyItem, index) => {
+          userData.email === replyItem.author.email ? BGcolor = 'green' : BGcolor = ''
           return(
             <StyledMessageItem BGcolor={BGcolor} key={index}>
               <div  className="replyText">
@@ -60,8 +59,8 @@ export default function PostReplies(props) {
                 </div>
               </div>
             </StyledMessageItem>
-          )
-        })
+            )
+          })
   
       )}
     </StyledRepliesList>

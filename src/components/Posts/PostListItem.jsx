@@ -8,20 +8,20 @@ import { StyledNewsListItem } from '../../theme/StyledListComponents'
 import TimeAgo from 'timeago-react';
 
 export default function PostListItem(props) {
-
+  let {isPinned} = props.post
   let fullName;
   if(props.post.author){
     const {firstName, lastName} = props.post.author 
     fullName = firstName.concat(' ' + lastName) 
   }
   let cuttedString = props.post.content
-  if(props.post.content.length >=200) {
+  if(props.post.content && props.post.content.length >=200) {
     cuttedString = props.post.content.substring(0, 100);
     cuttedString = cuttedString.concat(' ', '...');
   }
 
   return (
-    <StyledNewsListItem>
+    <StyledNewsListItem isPinned={isPinned}>
       {props.post && (
       <>
         <div className="mainPart">

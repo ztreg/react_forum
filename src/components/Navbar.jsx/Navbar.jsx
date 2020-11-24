@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import userKit from '../../data/userKit'
 import { StyledNavBar } from '../../theme/StyledComponents'
 import UserInfo from '../UserInfo/UserInfo'
-import { FaAd, FaAddressBook, FaHome, FaList, FaListUl, FaNewspaper, FaRegCaretSquareLeft } from 'react-icons/fa';
+import { FaHome, FaListUl, FaNewspaper } from 'react-icons/fa';
 
 export default function Navbar() {
   const UserKit = new userKit()
