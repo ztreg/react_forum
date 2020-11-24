@@ -1,8 +1,8 @@
 const jwt = require('jsonwebtoken')
 
 const ROOT_URL = 'https://lab.willandskill.eu'
-const COUNTRIES_URL = `${ROOT_URL}/api/v1/countries`
-const TEST_URL = `${ROOT_URL}/api/v1/`
+// const COUNTRIES_URL = `${ROOT_URL}/api/v1/countries`
+// const TEST_URL = `${ROOT_URL}/api/v1/`
 const SIGNUPURL = `${ROOT_URL}/api/v1/auth/users/`
 const LOGINURL = `${ROOT_URL}/api/v1/auth/api-token-auth/`
 const MEURL = `${ROOT_URL}/api/v1/me/`

@@ -12,7 +12,6 @@ export default function PostDetailItem(props) {
   let fullName;
   let country;
   let authorEmail = ''
-  console.log(detailItem);
   if(detailItem.author){
     const {firstName, lastName, email} = detailItem.author 
     authorEmail = email

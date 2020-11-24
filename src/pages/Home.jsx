@@ -2,8 +2,8 @@ import React from 'react'
 import { FaUserFriends } from 'react-icons/fa'
 import { StyledHero, StyledHomePage } from '../theme/StyledComponents'
 import image from '../heroImages/img3.jpg'
-import { HomePageContent } from '../theme/StyledListComponents'
 import userKit from '../data/userKit'
+
 export default function Home(props) {
   const UserKit = new userKit()
   return (

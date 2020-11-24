@@ -31,7 +31,6 @@ function App() {
       .then(res => res.json())
       .then(data => {
         setCountries(data.results)
-        console.log(data.results);
       })
       .catch(e => console.log(e))
     } 

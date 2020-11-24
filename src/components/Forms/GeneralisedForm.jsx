@@ -66,7 +66,6 @@ export default function GeneralisedForm(props) {
                   {formRow.input && statusArray && (
                    <span className="errorMessage">{formRow.input.name === errorType ? 
                     statusArray.map((status, index3) => {
-                      console.log(status);
                       return (
                         <div key={index3}>
                           {status}

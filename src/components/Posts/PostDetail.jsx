@@ -1,3 +1,4 @@
+/* eslint-disable eqeqeq */
 import React, { useContext, useEffect, useState } from 'react'
 import { ForumContext } from '../../contexts/ForumContext'
 import forumKit from '../../data/forumKit'

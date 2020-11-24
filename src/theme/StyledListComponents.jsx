@@ -1,3 +1,4 @@
+/* eslint-disable eqeqeq */
 import styled, { css } from 'styled-components'
 
 export const StyledList = styled.div`

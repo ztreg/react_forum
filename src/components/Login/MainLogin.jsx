@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React, { useContext, useState } from 'react'
 import { useHistory } from 'react-router-dom';
 import LoginInput from './LoginForm'
@@ -26,7 +27,7 @@ export default function MainLogin() {
 			.then(data => {
 				if(!data.token) {
           for (const [key, value] of Object.entries(data)) {
-            setLoginStatus(`${value}`)
+            setLoginStatus(` ${value}`)
           }
 				} else {
           setLoginStatus('ALL GOOD')

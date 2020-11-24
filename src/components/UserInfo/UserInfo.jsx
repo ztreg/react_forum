@@ -1,5 +1,5 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useContext, useEffect } from 'react'
-import { Link } from 'react-router-dom';
 import { UserContext } from '../../contexts/UserContext'
 import LogOut from '../Login/Logout';
 
@@ -22,7 +22,6 @@ export default function UserInfo() {
         <>
           <div>{userData.firstName} {userData.lastName}</div>
           <LogOut />
-          {/* <div>{userData.email}</div> */}
         </>
       )}
 

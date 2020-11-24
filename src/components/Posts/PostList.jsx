@@ -8,7 +8,6 @@ export default function PostList(props) {
     <StyledList>
       {props.postData &&
         props.postData.map((post, index) => {
-          console.log(post);
           return(
             <PostListItem key={index} post={post}/>
           )

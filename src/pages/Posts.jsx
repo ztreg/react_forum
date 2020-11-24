@@ -1,10 +1,11 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useContext, useEffect, useState } from 'react'
 import PostList from '../components/Posts/PostList'
 import { ForumContext } from '../contexts/ForumContext'
 import forumKit from '../data/forumKit'
 import { StyledHero } from '../theme/StyledComponents'
 import image from '../heroImages/img3.jpg'
-export default function Posts(props) {
+export default function Posts() {
 
   const {postData, setPostData} = useContext(ForumContext)
   const ForumKit = new forumKit()
@@ -16,7 +17,6 @@ export default function Posts(props) {
       ForumKit.fetchPosts()
       .then(res => res.json())
       .then(data => {
-        console.log(data.results);
         setPostData(data.results)
         setLoading('')
       })

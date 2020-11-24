@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { StyledDetailsItem } from './StyledListComponents'
+
 export const MainContainer = styled.div`
   
   padding: 30px;
