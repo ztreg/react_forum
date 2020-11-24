@@ -36,6 +36,7 @@ export default function GeneralisedForm(props) {
       <StyledForm>
         <ul>
           {SelectProps && (
+            // Loop everything the form wants, check for select
             array.map((formRow, index) => {
               return (
               <div key={index}>
@@ -62,22 +63,22 @@ export default function GeneralisedForm(props) {
                     </input>
                   )}
                 </li>
-                    
-                  {formRow.input && statusArray && (
-                   <span className="errorMessage">{formRow.input.name === errorType ? 
-                    statusArray.map((status, index3) => {
-                      return (
-                        <div key={index3}>
-                          {status}
-                        </div>
-                      )
-                    })
-                    : ''} </span>
-                  )}
-                  {formRow.select && (
-                    <p className="errorMessage">{formRow.select.name === errorType ? status: ''}</p>
-                  )}
-                  </div>               
+                {formRow.input && statusArray && (
+                  // Display errors in correct position
+                 <span className="errorMessage">{formRow.input.name === errorType ? 
+                  statusArray.map((status, index3) => {
+                    return (
+                      <div key={index3}>
+                        {status}
+                      </div>
+                    )
+                  })
+                  : ''} </span>
+                )}
+                {formRow.select && (
+                  <p className="errorMessage">{formRow.select.name === errorType ? status: ''}</p>
+                )}
+                </div>               
               )
             })  
         )}

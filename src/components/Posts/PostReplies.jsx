@@ -1,6 +1,7 @@
 import React, {  useContext, useEffect, useState } from 'react'
 import { FaWindowClose } from 'react-icons/fa'
 import ReactMarkdown from 'react-markdown'
+import TimeAgo from 'timeago-react'
 import { UserContext } from '../../contexts/UserContext'
 import forumKit from '../../data/forumKit'
 import { StyledPrimaryButton } from '../../theme/StyledComponents'
@@ -48,9 +49,14 @@ export default function PostReplies(props) {
         )}
       {postReplies && (
         postReplies.map((replyItem, index) => {
-          userData.email === replyItem.author.email ? BGcolor = 'green' : BGcolor = ''
+          userData.email === replyItem.author.email ? BGcolor = 'darkgreen' : BGcolor = ''
           return(
             <StyledMessageItem BGcolor={BGcolor} key={index}>
+              <div className="replyInfo">
+              <TimeAgo 
+                datetime={replyItem.createdAt}
+                locale='sv-SV'/>
+              </div>
               <div  className="replyText">
                 <div>
                   <ReactMarkdown source={replyItem.title} allowDangerousHtml />

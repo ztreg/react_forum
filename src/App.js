@@ -24,6 +24,7 @@ function App() {
   const [userData, setUserData] = useState(null)
   const [postData, setPostData] = useState(null)
   const [repliesData, setRepliesData] = useState(null)
+  const [allowedToFetch, setAllowedToFetch] = useState(true)
 
   function fetchCountries() {
     if(!countries) {
@@ -45,7 +46,7 @@ function App() {
     <GlobalStyle />
       <MainContainer>
         <UserContext.Provider value={{userData, setUserData}}>
-          <ForumContext.Provider value={{countries, categories, setCategories, postData, setPostData, repliesData, setRepliesData}}>
+          <ForumContext.Provider value={{countries, categories, setCategories, postData, setPostData, repliesData, setRepliesData, allowedToFetch, setAllowedToFetch}}>
             <Navbar />
             <Switch>
               <Route exact path="/" component={Home}></Route>

@@ -1,15 +1,17 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import { useHistory } from 'react-router-dom'
 import GeneralisedForm from '../components/Forms/GeneralisedForm'
 import formDataKit from '../data/formDataKit'
 import forumKit from '../data/forumKit'
 import { StyledHero } from '../theme/StyledComponents'
 import image from '../heroImages/img2signup.jpg'
+import { ForumContext } from '../contexts/ForumContext'
 
 export default function PostCreate() {
   
   const [createStatus, setCreateStatus] = useState('')
   const [errorType, setErrorType] = useState('')
+  const {setAllowedToFetch} = useContext(ForumContext)
   const [createPostData, setCreatePostData] = useState({
     title: '',
     content: '',
@@ -29,8 +31,10 @@ export default function PostCreate() {
     .then(res => res.json())
     .then(data => {
       if(data.id) {
+        setAllowedToFetch(true)
         setCreateStatus('Post created!')
         history.push('/posts')
+
       } else {
         for (const [key, value] of Object.entries(data)) {
           setErrorType(`${key}`)

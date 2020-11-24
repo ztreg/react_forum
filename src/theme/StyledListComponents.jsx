@@ -104,14 +104,16 @@ export const HomePageContent = styled(StyledList) `
 
 export const StyledMessageItem = styled(StyledItem) `
   margin: 0 auto;
-  width: 80%;
+  width: 60%;
+  @media(max-width: 600px) {
+    width: 90%;
+  }
   box-shadow: 5px 5px 1px 5px #2c0c0c;
-
+  .replyInfo {
+    display: flex;
+    justify-content:flex-end;
+  }
   ${props => props.BGcolor !== '' && css`
-      .replyText {
-        display: flex;
-        justify-content: flex-end;
-      }
       background-color: ${props => props.BGcolor}
     `}
 

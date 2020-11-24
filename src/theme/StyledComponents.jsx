@@ -1,7 +1,6 @@
 import styled from 'styled-components'
 
 export const MainContainer = styled.div`
-  
   padding: 30px;
   @media(max-width: 400px) {
     padding: 5px
@@ -90,6 +89,12 @@ export const StyledHomePage = styled.div`
   width: 100%;
   height: auto;
   text-align: center;
+  .section {
+    font-size: 1.4em;
+    >* {
+      padding: 10px;
+    }
+  }
 `
 
 export const StyledHero = styled.div `
