@@ -31,18 +31,13 @@ export default function PostDetailItem(props) {
         <p><ReactMarkdown className="content" source={detailItem.content} allowDangerousHtml /></p>
         
         <div className="postInfo"> 
-
           <p>This Article was created <TimeAgo 
             datetime={detailItem.createdAt}
-            locale='sv-SV'
-            /></p>
-          <p>Last Update: <TimeAgo 
-            datetime={detailItem.updatedAt}
-            locale='sv-SV'
-            />
-            </p>
+            locale='sv-SV'/></p>
 
-            <p>{authorEmail ? 'Contact Author : ' + authorEmail: 'No email given'}</p>
+          <p>Last Update: <TimeAgo  datetime={detailItem.updatedAt} locale='sv-SV' /></p>
+
+          <p>{authorEmail ? 'Contact Author : ' + authorEmail: 'No email given'}</p>
           <p>PostStatus: {!detailItem.isClosed ? <FaCheck /> : <FaCross /> }</p>
           <p>You are {detailItem.userSubscribed ? 'Subscribed' : 'Not subscribed' } to this article.</p>
         </div>

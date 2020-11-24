@@ -10,6 +10,8 @@ export default function Posts() {
   const {postData, setPostData, allowedToFetch, setAllowedToFetch} = useContext(ForumContext)
   const ForumKit = new forumKit()
 
+  const [nextPage, setNextPage] = useState('')
+  const [previousPage, setPreviousPage] = useState('')
   const [loading , setLoading] = useState('')
 
   function fetchPostData(yes) {
@@ -18,6 +20,11 @@ export default function Posts() {
       ForumKit.fetchPosts()
       .then(res => res.json())
       .then(data => {
+        if(data.next) {
+          setNextPage(data.next)
+        } if (data.previous) {
+          setPreviousPage(data.previous)
+        }
         setPostData(data.results)
         setLoading('')
         setAllowedToFetch(false)
@@ -34,6 +41,38 @@ export default function Posts() {
     }, 60000);
   }
 
+  // Next Page, Previous Page.
+  // The worst code Ive ever written, super generalized and handy.
+  function onClickNextHandlePages(){
+    setLoading('Loading...')
+    ForumKit.fetchMorePosts(nextPage)
+      .then(res => res.json())
+      .then(data => {
+        if(data.next) {
+          setNextPage(data.next)
+        } if (data.previous) {
+          setPreviousPage(data.previous)
+        }
+        setLoading('')
+        setPostData(data.results)
+      })
+  }
+  function onClickPreviousHandlePages(){
+    setLoading('Loading...')
+    ForumKit.fetchMorePosts(previousPage)
+      .then(res => res.json())
+      .then(data => {
+        if(data.next) {
+          setNextPage(data.next)
+        } if (data.previous) {
+          setPreviousPage(data.previous)
+        }
+        console.log(data);
+        setLoading('')
+        setPostData(data.results)
+      })
+  }
+
   useEffect(() => {
     if (allowedToFetch) {
       fetchPostData(true)
@@ -47,7 +86,13 @@ export default function Posts() {
         <h1 style={{color: "black", textAlign: 'center'}}>{loading}</h1>
       )}
       {postData && (
-        <PostList postData={postData} />
+        <PostList 
+          previousPage={previousPage}
+          nextPage={nextPage}
+          onClickPreviousHandlePages={onClickPreviousHandlePages} 
+          onClickNextHandlePages={onClickNextHandlePages} 
+          postData={postData} 
+        />
       )}
     </>
   )

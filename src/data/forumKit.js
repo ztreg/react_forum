@@ -18,6 +18,10 @@ export default class {
     return fetch( POSTS_URL, {headers: this.getPrivateHeaders()})
   }
 
+  fetchMorePosts(URL){
+    return fetch(URL, {headers: this.getPrivateHeaders()})
+  }
+  
   fetchSinglePost(id) {
     const SINGLEPOST_URL = `${ROOT_URL}/api/v1/forum/posts/${id}/`
     return fetch( SINGLEPOST_URL, {headers: this.getPrivateHeaders()})
@@ -43,6 +47,8 @@ export default class {
     const REPLIES_URL = `${ROOT_URL}/api/v1/forum/posts/${id}/replies`;
     return fetch(REPLIES_URL, {headers: this.getPrivateHeaders()})
   }
+
+ 
 
   getToken() {
     return localStorage.getItem("JWT")
