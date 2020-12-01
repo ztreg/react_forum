@@ -103,7 +103,7 @@ export const HomePageContent = styled(StyledList) `
 `
 
 export const StyledMessageItem = styled(StyledItem) `
-  margin: 0 auto;
+  margin: 0 auto; 
   width: 60%;
   @media(max-width: 600px) {
     width: 90%;
