@@ -8,7 +8,9 @@
 6. Reply ReactMarkDown - [x]
 7. Reply form "open/close" - [x]
 8. Form Output Controller - [x]
-9. Hämta alla posts varje minut - [ ]
+9. Hämta alla posts varje minut - [x]
+10. Pagination - [x]
+
 
 ### `yarn start`
 
